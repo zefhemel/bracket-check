@@ -1,0 +1,52 @@
+{
+    modes: {
+        clojure: {
+            commands: {
+                "Tools:Brackets:Check": {
+                    scriptUrl: "./check.js",
+                    internal: true,
+                    inputs: {
+                        text: true
+                    },
+                    brackets: ["()", "{}", "[]"],
+                    skip: [[";", "\n"], ["\"", "\""]]
+                }
+            },
+            handlers: {
+                check: ["Tools:Brackets:Check"]
+            }
+        },
+        go: {
+            commands: {
+                "Tools:Brackets:Check": {
+                    scriptUrl: "./check.js",
+                    internal: true,
+                    inputs: {
+                        text: true
+                    },
+                    brackets: ["()", "{}", "[]"],
+                    skip: [["\"", "\""], ["`", "`"], ["//", "\n"], ["/*", "*/"]]
+                }
+            },
+            handlers: {
+                check: ["Tools:Brackets:Check"]
+            }
+        },
+        dart: {
+            commands: {
+                "Tools:Brackets:Check": {
+                    scriptUrl: "./check.js",
+                    internal: true,
+                    inputs: {
+                        text: true
+                    },
+                    brackets: ["()", "{}", "[]"],
+                    skip: [["\"", "\""], ["'", "'"], ["//", "\n"], ["/*", "*/"]]
+                }
+            },
+            handlers: {
+                check: ["Tools:Brackets:Check"]
+            }
+        }
+    }
+}

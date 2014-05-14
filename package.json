@@ -1,0 +1,9 @@
+{
+    "name": "Bracket checker",
+    "uri": "gh:zefhemel/bracket-check",
+    "version": "0.1",
+    "description": "Checks balancing of brackets",
+    "files": [
+        "check.js"
+    ]
+}
