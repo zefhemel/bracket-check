@@ -47,7 +47,7 @@ module.exports = function(info) {
             var start = s[0];
             var end = s[1];
             for(var j = 0; j < start.length; j++) {
-                if(text[i] !== start[j]) {
+                if(text[i + j] !== start[j]) {
                     return;
                 }
             }
