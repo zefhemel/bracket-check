@@ -47,22 +47,39 @@ module.exports = function(info) {
             var start = s[0];
             var end = s[1];
             for(var j = 0; j < start.length; j++) {
-                if(text[i] !== start[j]) {
+                if(text[i + j] !== start[j]) {
                     return;
                 }
             }
             // Still here? Good! Let's get skippin'
             i += start.length;
             // Now let's find the end
-            for(j = 0; j < end.length && i < text.length; j++, i++) {
-                // console.log("Looking at", text[i], end[j]);
-                if(text[i] !== end[j]) {
-                    j = -1; // will be 0 on next iteration
+            for(j = []; Math.max.apply(null, j) < end.length && i < text.length; increment(j), i++) {
+                //if (j.length > 0) console.log("Looking at", text[i], j, end);
+                
+                var k = 0;
+                //Check that all current positions are valid
+                while (k < j.length) {
+                  if(text[i] !== end[j[k]]) {
+                      // remove invalid ones
+                      j.splice(k, 1);
+                  } else {
+                      k++;
+                  }
                 }
+                
+                // Add a new iterator
+                if (text[i] === end[0]) j.push(0);
             }
         });
     }
-
+    
+    function increment(j) {
+      for (var k = 0; k < j.length; k++) {
+        j[k] = j[k] + 1;
+      }
+    }
+    
     function isOpenBracket(ch) {
         for (var i = 0; i < brackets.length; i++) {
             if (ch === brackets[i][0]) {
